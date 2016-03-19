@@ -1,0 +1,295 @@
+# Course 220
+
+## Lesson 1
+
+### Variables and Numbers
+
+#### 1.
+
+```javascript
+var numerator = 10;
+```
+
+#### 2.
+
+```javascript
+var denominator = 2;
+```
+
+#### 3.
+
+```javascript
+var answer = numerator / denominator;
+```
+
+#### 4.
+
+```javascript
+var incrementer = 1;
+```
+
+#### 5.
+
+```javascript
+var start = incrementer;
+```
+
+#### 6.
+
+```javascript
+var end,
+    difference;
+```
+
+#### 7.
+
+```javascript
+incrementer += 1;
+incrementer += 1;
+incrementer += 1;
+
+console.log(incrementer);
+```
+
+#### 8.
+
+```javascript
+incrementer ++;
+incrementer ++;
+```
+
+#### 9.
+
+```javascript
+end = incrementer;
+difference = end - start;
+console.log(end);
+console.log(difference);
+```
+
+#### 10.
+
+```javascript
+answer = (11 + 31) * 3;
+console.log(answer);
+```
+
+### Strings
+
+#### 1.
+
+```javascript
+var first_name = "Tyler",
+    last_name = "Guillen";
+
+full_name = first_name + " " + last_name;
+console.log(full_name);
+```
+
+#### 2.
+
+```javascript
+console.log(first_name.concat(last_name));
+```
+
+#### 3.
+
+```javascript
+console.log(last_name.split(" "));
+```
+
+#### 4.
+
+```javascript
+var language = "JavaScript";
+var idx = language.indexOf("s");
+console.log(idx);
+```
+
+#### 5.
+
+```javascript
+char_code = language.charCodeAt(idx);
+console.log(char_code); // => 83
+```
+
+#### 6.
+
+```javascript
+console.log(String.fromCharCode(char_code));
+```
+
+#### 7.
+
+```javascript
+console.log(language.lastIndexOf("a")); // => 3
+```
+
+#### 8.
+
+```javascript
+var a = "a",
+    b = "b";
+
+console.log(a > b); // => false
+
+b = "B";
+
+console.log(a > b); // => true
+```
+
+#### 9.
+
+```javascript
+var a_index,
+    v_index;
+
+a_index = language.indexOf("a");
+v_index = language.indexOf("v");
+
+console.log(language.substr(a_index, 4));
+console.log(language.substr(v_index, 4));
+```
+
+#### 10.
+
+```javascript
+console.log(language.substring(a_index, v_index));
+```
+
+#### 11.
+
+```javascript
+var fact_1 = "JavaScript is fun",
+    fact_2 = "Kids like it too";
+
+var compound_sentence = fact_1 + " and " + fact_2.toLowerCase();
+console.log(compound_sentence);
+```
+
+#### 12.
+
+```javascript
+console.log(fact_1[0]);
+console.log(fact_2[0]);
+```
+
+#### 13.
+
+```javascript
+var pi = 22/7;
+pi = pi.toString();
+console.log(pi);
+
+console.log(pi.lastIndexOf("14"));
+```
+
+#### 14.
+
+```javascript
+var box_number = 356..toString();
+console.log(box_number);
+box_number = (356).toString();
+console.log(box_number);
+```
+
+#### 15.
+
+```javascript
+box_number = +box_number;
+console.log(typeof box_number);
+box_number = "" + box_number;
+console.log(typeof box_number);
+```
+
+### Logic
+
+#### 1.
+
+```javascript
+var apples = 3,
+    bananas = 5;
+
+if (apples == bananas) {
+  console.log("apples equals equals bananas");
+}
+```
+
+#### 2.
+
+```javascript
+banans = "3";
+
+if (apples == bananas) {
+  console.log("apples equals equals bananas");
+}
+```
+
+#### 3.
+
+```javascript
+if (apples === bananas) {
+  console.log("apples equals equals equals bananas"); // This will not run.
+}
+```
+
+#### 4. & 5.
+
+```javascript
+if (apples === bananas) {
+  console.log("apples equals equals equals bananas");
+} else if (apples == bananas) {
+  console.log("apples equals equals bananas");
+} else {
+  console.log("not (apples equals equals equals bananas)");
+}
+```
+
+#### 6.
+
+```javascript
+if (apples === bananas) {
+  console.log("apples equals equals equals bananas");
+} else {
+  if(apples == bananas) {
+  console.log("apples equals equals bananas");
+  } else {
+    console.log("not (apples equals equals equals bananas)");
+  }
+}
+```
+
+#### 7.
+
+```javascript
+apples = 3;
+bananas = 3;
+
+var are_equal = apples == bananas;
+console.log(are_equal); // => true
+```
+
+#### 8.
+
+```javascript
+apples = 3;
+bananas = undefined;
+
+var either_or = apples || bananas;
+console.log(either_or);
+```
+
+#### 9.
+
+```javascript
+bananas = 1;
+either_or = apples || bananas; // => 3
+either_or = bananas || apples; // => 1
+```
+
+#### 10.
+
+```javascript
+var last_name = "Riley";
+var family_message = last_name === "Riley" ? "You're part of the family!" : "You're not family!";
+```
