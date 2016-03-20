@@ -448,3 +448,34 @@ function arrayToString(array) {
   return result;
 }
 ```
+
+### Primitive Types and Type Coercion
+
+#### 1.
+
+```javascript
+console.log(+x + y);
+```
+
+#### 2.
+
+`x * y` will be a number, since when we use the `*` operator on a string and a number, the string will be attempted to be coerced to a number.
+
+#### 3.
+
+```javascript
+console.log("" + npa + nxx + num);
+```
+
+#### 4.
+
+```javascript
+console.log(String(npa) + String(nxx) + String(num));
+```
+
+#### 5.
+
+```javascript
+console.log(bool.toString());
+console.log(arr.toString());
+```
