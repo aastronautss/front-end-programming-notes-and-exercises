@@ -293,3 +293,158 @@ either_or = bananas || apples; // => 1
 var last_name = "Riley";
 var family_message = last_name === "Riley" ? "You're part of the family!" : "You're not family!";
 ```
+
+### Functions
+
+#### 1.
+
+```javascript
+function average(a, b, c) {
+  return (a + b + c) / 3;
+}
+
+console.log(average(4, 14, 6));
+```
+
+#### 2.
+
+```javascript
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+function average(a, b, c) {
+  return sum(a, b, c) / 3;
+}
+
+console.log(average(3, 14, 6));
+```
+
+#### 3., 4.
+
+```javascript
+function sum(numbers) {
+  var result = 0;
+  for (var i = 0; i < numbers.length; i++) {
+    result += numbers[i];
+  }
+  return result;
+}
+
+function average(numbers) {
+  return sum(numbers) / numbers.length;
+}
+
+console.log(average(3, 14, 6));
+```
+
+#### 5.
+
+```javascript
+var temperatures = [76, 50, 64, 40, 77];
+console.log(average(temperatures));
+```
+
+#### 6.
+
+```javascript
+function fizzBuzz(max) {
+  for (var i = 1; i <= max; i++) {
+    output = "";
+    if (i % 3 == 0) {
+      output += "Fizz";
+    }
+
+    if (i % 5 == 0) {
+      output += "Buzz";
+    }
+
+    console.log(output || i);
+  }
+}
+```
+
+#### 7.
+
+```javascript
+function randomInt(max) {
+  return Math.ceil(Math.random() * (max ));
+}
+```
+
+### Arrays
+
+#### 1.
+
+```javascript
+var friends = ["Bob", "Josie", "Sam"],
+    enemies = ["Bob", "Josie", "Sam"];
+
+console.log(friends == enemies);
+```
+
+#### 2.
+
+```javascript
+var friends_clone = friends;
+console.log(friends == friends_clone);
+```
+
+#### 3.
+
+```javascript
+function lastInArray(ary) {
+  ary[ary.length - 1];
+}
+```
+
+#### 4.
+
+```javascript
+var names = ["Steve", "Martha", "Pat"];
+
+function rollCall(names) {
+  for(var i = 0; i < names.length; i++) {
+    console.log(names[i]);
+  }
+}
+```
+
+#### 5.
+
+```javascript
+var nums = [1, 2, 3, 4, 5];
+
+function reverse(ary) {
+  var new_ary = []
+  for (i = ary.length - 1; i >= 0; i--) {
+    new_ary.push(ary[i]);
+  }
+  return new_ary;
+}
+
+console.log(reverse(nums));
+```
+
+#### 6.
+
+```javascript
+function findInstance(ary, term) {
+  for(var i = 0; i < ary.length; i++) {
+    if (ary[i] == term) { return i }
+  }
+  return -1;
+}
+```
+
+#### 7.
+
+```javascript
+function arrayToString(array) {
+  result = "";
+  for (var i = 0; i < ary.length; i++) {
+    result += array[i];
+  }
+  return result;
+}
+```
