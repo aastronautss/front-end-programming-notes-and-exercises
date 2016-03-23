@@ -420,3 +420,203 @@ function newRandom(min, max) {
   return random_val + min;
 }
 ```
+
+## Advanced Objects
+
+### 1.
+
+```javascript
+console.log(Object.getPrototypeOf([]));
+
+function NewArray() {};
+NewArray.prototype = Object.create(Object.getPrototypeOf([]));
+
+NewArray.prototype.first = function() { return this[0] };
+```
+
+### 2.
+
+```javascript
+function newPerson(name) {
+  this.name = name;
+  Object.defineProperties(this, {
+    log: {
+      value: function() { console.log(this.name); },
+      writable: false
+    }
+  });
+}
+```
+
+### 3.
+
+```javascript
+var something = {
+  num: 23,
+  str: "hello",
+  ary: [1, 2, 3],
+  obj: { name: "tyler" },
+  fcn: function() { console.log("hello"); }
+};
+
+Object.freeze(something);
+
+something.num = 5;
+something.str = "hola";
+something.ary = [3, 2, 1];
+something.ary.push(4);
+something.obj = { number: 3 };
+something.fcn = function() { console.log("whatever"); };
+
+console.log(something);
+```
+
+## Object Constructors and Prototypes
+
+### 1.
+
+```javascript
+var invoices = new Object();
+
+invoices.foo = 130;
+invoices.bar = 250;
+```
+
+### 2.
+
+```javascript
+var payments = {
+  foo: 80,
+  bar: 55
+};
+```
+
+### 3.
+
+```javascript
+var payments_received = 0;
+
+invoices.foo -= payments.foo;
+invoices.bar -= payments.bar;
+
+payments_received = payments.foo + payments.bar;
+```
+
+### 4.
+
+```javascript
+var remaining_due = 0;
+
+for (var item in invoices) {
+  remaining_due += invoices[item];
+}
+
+console.log(remaining_due);
+```
+
+### 5.
+
+```javascript
+var second_invoices = Object.create(invoices);
+
+console.log(second_invoices.foo);
+
+invoices.foo = 0;
+console.log(second_invoices.foo); // 130
+```
+
+### 6.
+
+```javascript
+var Invoices = {
+  foo: 130,
+  bar: 250
+};
+```
+
+### 7.
+
+```javascript
+var outstanding_invoices = [];
+outstanding_invoices.push(Object.create(Invoices));
+outstanding_invoices.push(Object.create(Invoices));
+```
+
+### 8.
+
+```javascript
+Object.freeze(Invoices);
+Invoices.foo = 100;
+console.log(Invoices.foo);
+```
+
+### 9.
+
+```javascript
+outstanding_invoices[0].foo = 0;
+console.log(outstanding_invoices[0].foo);
+```
+
+### 10.
+
+```javascript
+console.log(Object.isFrozen(Invoices));
+console.log(Object.isFrozen(outstanding_invoices[0]));
+```
+
+### 11.
+
+```javascript
+function newInvoices() {
+  return { foo: 130, bar: 250 };
+}
+
+var outstanding_invoices = [];
+outstanding_invoices.push(newInvoices());
+outstanding_invoices.push(newInvoices());
+```
+
+### 12.
+
+```javascript
+outstanding_invoices[0].foo = 0;
+console.log(outstanding_invoices[0].foo);
+console.log(outstanding_invoices[1].foo);
+```
+
+### 13.
+
+```javascript
+function newInvoices(foo, bar) {
+  return { foo: foo || 130, bar: bar || 250 };
+}
+
+outstanding_invoices.push(newInvoices(undefined, 400));
+```
+
+### 14.
+
+```javascript
+function newInvoices(params) {
+  params = params || {};
+  return { foo: params.foo || 130, bar: params.bar || 250 };
+}
+```
+
+### 15.
+
+```javascript
+function newInvoices(params) {
+  params = params || {};
+  var invoices = { foo: params.foo || 130, bar: params.bar || 250 };
+
+  invoices.getTotal = function() {
+    return invoices.foo + invoices.bar;
+  };
+
+  return invoices;
+}
+
+outstanding_invoices.push(newInvoices());
+console.log(outstanding_invoices[3].getTotal());
+```
