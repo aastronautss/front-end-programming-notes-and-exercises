@@ -620,3 +620,167 @@ function newInvoices(params) {
 outstanding_invoices.push(newInvoices());
 console.log(outstanding_invoices[3].getTotal());
 ```
+
+## Closures and Scope
+
+### 1.
+
+```javascript
+var total = 50;
+
+function incrementBy(amount) {
+  total += amount;
+}
+
+incrementBy(15);
+console.log(total); // 65
+```
+
+### 2.
+
+```javascript
+function incremenbBy(amount) {
+  var total = 0;
+  total += amount;
+}
+
+incrementBy(15);
+console.log(total); // 65
+```
+
+### 3.
+
+```javascript
+var total = 50,
+    increment = 15;
+
+function incrementBy(increment) {
+  total += increment;
+}
+
+incrementBy(increment);
+console.log(total); // 65
+incrementBy();
+console.log(total); // NaN
+```
+
+### 4.
+
+```javascript
+var fruit = "apple";
+
+function setFruitType() {
+  fruit = "banana";
+}
+
+console.log(fruit); // apple
+setFruitType();
+console.log(fruit); // banana
+
+function setFruitType() {
+  var fruit = "banana";
+}
+
+fruit = "apple";
+console.log(fruit); // apple
+setFruitType();
+console.log(fruit); // apple
+```
+
+### 5.
+
+```javascript
+var groceries = {
+  eggs: 3.99,
+  milk: 4.99,
+  cereal: 4.50
+};
+
+function getTotal(items) {
+  var total = 0;
+
+  for (var item in items) {
+    total += items[item];
+  }
+
+  items.total = total;
+}
+
+getTotal(groceries);
+console.log(groceries.total);
+```
+
+### 6.
+
+```javascript
+var temps = [53, 86, 12, 43];
+
+function removeLastTemperature(list) {
+  list.pop();
+}
+
+removeLastTemperature(temps);
+
+console.log(temps);
+```
+
+### 7.
+
+```javascript
+function average(values) {
+  var total = 0;
+  for (var i in values) {
+    total += values[i];
+  }
+
+  return total / values.length;
+}
+
+console.log(average(temps));
+```
+
+### 8.
+
+```javascript
+function average() {
+  var total = 0;
+  for (var i in this) {
+    total += this[i];
+  }
+
+  return total / this.length;
+}
+
+console.log(average(temps));
+```
+
+### 9.
+
+```javascript
+console.log(average.call(temps));
+console.log(average.apply(temps));
+```
+
+### 10.
+
+```javascript
+var averageTemperature = average.bind(temps);
+
+console.log(averageTemperature());
+```
+
+### 11.
+
+```javascript
+temps.push(115);
+
+console.log(averageTemperature());
+```
+
+### 12.
+
+```javascript
+temps.average = average;
+
+console.log(temps.average());
+```
