@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script type="text/javascript">
+      var most_frequent_word,
+          most_frequent_count = 0,
+          total_word_count = 0,
+          word_counts = {};
+
+      var paragraph = "In the midway of this our mortal life,\
+                       I found me in a gloomy wood, astray\
+                       Gone from the path direct: and e'en to tell\
+                       It were no easy task, how savage wild\
+                       That forest, how robust and rough its growth,\
+                       Which to remember only, my dismay\
+                       Renews, in bitterness not far from death.\
+                       Yet to discourse of what there good befell,\
+                       All else will I relate discover'd there.\
+                       How first I enter'd it I scarce can say,\
+                       Such sleepy dullness in that instant weigh'd\
+                       My senses down, when the true path I left,\
+                       But when a mountain's foot I reach'd, where clos'd\
+                       The valley, that had pierc'd my heart with dread,\
+                       I look'd aloft, and saw his shoulders broad\
+                       Already vested with that planet's beam,\
+                       Who leads all wanderers safe through every way.";
+
+      var words_str = paragraph.replace(/\.|\,|\;/g, "");
+      var words_ary = words_str.split(/\s+/);
+
+      for (var i in words_ary) {
+        var word = words_ary[i];
+        total_word_count++;
+
+        if (word_counts[word]) {
+          word_counts[word]++;
+        } else {
+          word_counts[word] = 1;
+        }
+      }
+
+      for (var word in word_counts) {
+        var count = word_counts[word];
+        if (count > most_frequent_count) {
+          most_frequent_word = word;
+          most_frequent_count = count;
+        }
+      }
+
+      console.table(word_counts);
+      console.log("The total word count is: " + total_word_count);
+      console.log("The most frequent word is " + most_frequent_word + " at " +
+                  most_frequent_count + " occurrences.");
+    </script>
+
+    <p>Check the developer console for output.</p>
+  </body>
+</html>
