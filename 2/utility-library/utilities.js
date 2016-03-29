@@ -126,6 +126,10 @@
       }
     };
 
+    (["isElement", "isArray", "isObject", "isFunction", "isBoolean", "isString", "isNumber"]).forEach(function(method) {
+      u[method] = function() { _[method].call(u, element); }
+    });
+
     return u;
   };
 
@@ -157,6 +161,31 @@
 
     return args[0];
   };
+
+  _.isElement = function(obj) {
+    return obj && obj.nodeType === 1;
+  };
+
+  _.isArray = Array.isArray || function(obj) {
+    return toString.call(obj) === "[object Array]";
+  };
+
+  _.isObject = function(obj) {
+    var type = typeof obj;
+    return type === "function" || type === "object" && !!obj;
+  };
+
+  _.isFunction = function(obj) {
+    var type = typeof obj;
+
+    return type === "function";
+  };
+
+  (["Boolean", "String", "Number"]).forEach(function(method) {
+    _["is" + method] = function(obj) {
+      return toString.call(obj) === "[object " + method + "]";
+    };
+  });
 
   window._ = _;
 }) ();
