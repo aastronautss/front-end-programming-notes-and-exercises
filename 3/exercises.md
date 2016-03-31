@@ -53,3 +53,71 @@ mult.innerHTML = 13 * 9;
 ```javascript
 document.body.setAttribute("id", "styled");
 ```
+
+## Using jQuery Selectors
+
+### 1.
+
+```javascript
+$("h1");
+```
+
+### 2.
+
+```javascript
+$("#site_title");
+```
+
+### 3.
+
+```javascript
+$("article li");
+```
+
+### 4.
+
+```javascript
+$("article li").eq(2);
+```
+
+### 5.
+
+```javascript
+$("table").find("tr:odd");
+```
+
+### 6.
+
+```javascript
+$("ul li li").filter(":contains('ac ante')").parents("li");
+```
+
+### 7.
+
+```javascript
+$("ul li li").filter(":contains('ac ante')").next();
+```
+
+### 8.
+
+```javascript
+$("table td").last();
+```
+
+### 9.
+
+```javascript
+$("td").not(".protected");
+```
+
+### 10.
+
+```javascript
+$("a[href^=#]");
+```
+
+### 11.
+
+```javascript
+$("[class*=block]")
+```

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Events Exercise</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      var $form = $("form");
+      $form.submit(function(e) {
+        e.preventDefault();
+        var value = $("[type=text]").val(),
+            char = value.charCodeAt(0);
+
+        $(document).off("keypress").on("keypress", function(e) {
+          if (e.which !== char) {
+            return;
+          }
+
+          $("a").trigger("click");
+        });
+      });
+
+      $("a").on("click", function(e) {
+        e.preventDefault();
+        $("#accordion").slideToggle();
+      });
+    });
+  </script>
+</head>
+<body>
+  <form action="" method="post">
+    <input type="text" maxlength="1">
+    <input type="submit" value="Set Hotkey">
+  </form>
+  <a href="#">Toggle!</a>
+  <div id="accordion">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie dolor mauris, a ultricies dui elementum sed. Etiam vitae imperdiet nisi. Nam malesuada eros id nisl pulvinar, et viverra lacus ultricies. Aliquam lectus justo, posuere id elit ut, finibus eleifend massa. Integer sollicitudin, odio at iaculis sodales, erat dolor scelerisque odio, volutpat porta est nisl at neque. Donec vitae vestibulum lacus, non scelerisque sem. Sed nec dictum augue. Nam tempus arcu eu consequat sodales. Nullam dolor lorem, posuere quis pulvinar sed, mollis eget odio. Praesent porta viverra diam a eleifend. Nullam libero orci, dapibus in eros ac, porttitor ornare purus. Aenean mollis rhoncus interdum. Integer varius, sem sed molestie tincidunt, massa sem tempus enim, at semper metus dui a enim. In tincidunt arcu quis tortor sollicitudin aliquet id nec felis. Duis commodo, ex vel interdum euismod, ipsum nisl ornare quam, vel accumsan risus ligula in libero. Proin risus turpis, tempor et orci semper, posuere ullamcorper mauris.
+    </p>
+  </div>
+</body>
+</html>
