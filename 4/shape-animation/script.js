@@ -12,7 +12,7 @@ $(function() {
   }
 
   function createShape(data) {
-    var $shape = $("<div />", {
+    return $("<div />", {
       "class": "shape " + data.shape,
       data: data,
       css: {
@@ -20,8 +20,6 @@ $(function() {
         top: +data.start_y
       }
     });
-
-    return $shape;
   }
 
   function animateShape() {
@@ -51,12 +49,9 @@ $(function() {
     e.preventDefault();
 
     var $f = $(e.target),
-        data = getFormObject($f),
-        type = $f.find("[name=shape]").val();
+        data = getFormObject($f);
 
-    var $new_shape = createShape(data);
-
-    $screen.append($new_shape);
+    $screen.append(createShape(data));
   });
 
   $("#start").click(function(e) {
