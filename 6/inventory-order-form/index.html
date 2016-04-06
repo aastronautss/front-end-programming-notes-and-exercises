@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Inventory Order Form</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <main>
+      <form action="" method="post">
+        <h1>Inventory Order Form</h1>
+        <h3>Date Ordered</h3>
+        <p><time datetime=""></time></p>
+
+        <fieldset>
+          <label for="name">Requester Name</label>
+          <input type="text" id="name" name="name">
+
+          <h2>Shipping Address</h2>
+          <label for="street_address_1">Street Address</label>
+          <input type="text" id="street_address_1" name="street_address_1">
+          <input type="text" id="street_address_2" name="street_address_2">
+
+          <label for="city">City</label>
+          <input type="text" id="city" name="city">
+          <label for="state">State</label>
+          <input type="text" id="state" name="state">
+          <label for="zipcode">Zipcode</label>
+          <input type="number" id="zipcode" name="zipcode">
+
+          <h2>Items to Order</h2>
+          <script type="text/template" id="inventory_item">
+            <tr>
+              <td>
+                <input type="hidden" name="item_id_ID" value="ID">
+                <label for="item_name_ID">Name</label>
+                <input name="item_name_ID" type="text">
+              </td>
+              <td>
+                <label for="item_stock_number_ID">Stock Number</label>
+                <input type="text" maxlength="8" name="item_stock_number_ID">
+              </td>
+              <td>
+                <label for="item_quantity_ID">Quantity</label>
+                <input type="number" value="1" name="item_quantity_ID">
+              </td>
+              <td>
+                <a href="#" class="delete">Delete</a>
+              </td>
+            </tr>
+          </script>
+
+          <table id="inventory">
+          </table>
+
+          <button id="add_item">Add Item</button>
+
+          <input type="submit" value="Order Inventory">
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>
